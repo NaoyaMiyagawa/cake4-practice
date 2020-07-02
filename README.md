@@ -2,12 +2,12 @@
 
 ## Environment
 
--   web
-    -   PHP 7.4.\*
-    -   CakePHP 4.\*
-    -   Apache
--   db
-    -   PostgreSQL
+- web
+  - PHP 7.4
+  - CakePHP 4
+  - Apache
+- db
+  - PostgreSQL
 
 ## Setup Environment
 

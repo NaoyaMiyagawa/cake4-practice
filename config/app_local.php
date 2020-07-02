@@ -1,7 +1,7 @@
 <?php
 /*
  * Local configuration file to provide any overrides to your app.php configuration.
- * Copy and save this file as app_local.php and make changes as required.
+             * Copy and save this file as app_local.php and make changes as required.
  * Note: It is not recommended to commit files with credentials such as app_local.php
  * into source code version control.
  */
@@ -25,7 +25,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', 'b6b7dd25ff5c9d6e1f04eaec1e3aa79d186ef33eedab09639b53b6bb7542939d'),
     ],
 
     /*
@@ -36,18 +36,18 @@ return [
      */
     'Datasources' => [
         'default' => [
-            'host' => 'localhost',
+            'host' => env('DB_HOST'),
+
             /*
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
-            //'port' => 'non_standard_port_number',
 
-            'username' => 'my_app',
-            'password' => 'secret',
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
 
-            'database' => 'my_app',
+            'database' => env('DB_DATABASE'),
             /**
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.
@@ -64,11 +64,11 @@ return [
          * The test connection is used during the test suite.
          */
         'test' => [
-            'host' => 'localhost',
+            'host' => env('DB_HOST'),
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
-            'database' => 'test_myapp',
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'database' => env('DB_DATABASE_TEST'),
             //'schema' => 'myapp',
         ],
     ],
