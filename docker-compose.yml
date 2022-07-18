@@ -6,6 +6,9 @@ networks:
   backend:
     driver: bridge
 
+volumes:
+  db-store:
+
 services:
   # ----------------------------------------------------------------------------
   # PHP - Apache
@@ -28,7 +31,7 @@ services:
     build: ./server/docker/db
     container_name: ${COMPOSE_PROJECT_NAME}_db
     volumes:
-      - ./server/docker/db/.data:/var/lib/postgresql/data:delegated
+      - db-store:/var/lib/postgresql/data
     ports:
       - ${DB_PORT}:5432
     environment:

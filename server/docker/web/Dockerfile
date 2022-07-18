@@ -1,9 +1,9 @@
-FROM php:7.4-apache
+FROM php:8.2-rc-apache-buster
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # node
-RUN curl -SL https://deb.nodesource.com/setup_12.x | bash \
+RUN curl -SL https://deb.nodesource.com/setup_16.x | bash \
     && apt-get update \
     && apt-get install -y --no-install-recommends nodejs \
     && npm install -g npm@latest \
@@ -13,7 +13,7 @@ RUN curl -SL https://deb.nodesource.com/setup_12.x | bash \
 RUN apt-get update \
     # apt-get install
     && apt-get install -y --no-install-recommends \
-    unzip git vim \
+    unzip git vim zsh \
     libzip-dev libicu-dev libpq-dev \
     libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     # docker-php-ext-install
@@ -36,11 +36,6 @@ ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-RUN composer config -g process-timeout 3600 \
-    && composer global require hirak/prestissimo
-
-# 
 
 WORKDIR /var/www/html
 
